@@ -1,0 +1,24 @@
+{
+    "background": {
+        "persistent": true,
+        "page": "background.html"
+    },
+    "minimum_chrome_version": "34",
+    "browser_action": {
+        "default_icon": "icon_not_logged.png"
+    },
+    "options_page": "options.html",
+    "description": "Designed to provide convenient notifications for agents using the LiveSmart.",
+    "icons": {
+        "128": "icon.png"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://YOUR_DOMAIN https://YOUR_DOMAIN:9001/; object-src 'self'",
+    "name": "LiveSmart Chrome Assistant",
+    "permissions": [
+        "tabs",
+        "background",
+        "notifications"
+    ],
+    "version": "0.12",
+    "manifest_version": 2
+}

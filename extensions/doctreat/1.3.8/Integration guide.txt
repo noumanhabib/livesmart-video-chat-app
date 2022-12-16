@@ -1,0 +1,20 @@
+﻿Integration Guide for DocTreat Theme 1.3.8
+
+1) Prerequisites
+
+- Make sure you have installed and activated LiveSmart Video Chat
+
+- More information about LiveSmart installation you can find here:
+https://livesmart.video/installation
+
+- Make sure you have installed DocTreat from 
+https://themeforest.net/item/doctreat-doctors-directory-wordpress-theme/24867777
+
+- After WordPress, DocTreat and LiveSmart installation, go to WordPress admin panel and in plugin section find and install LiveSmart WordPress plugin. Then setup it from WP admin menu LiveSmart Settings.
+
+
+2) Integration
+
+- Once you have installed both systems, you can do a backup of your DocTreat files. Then go and replace your wp-content with /extensions/doctreat/1.3.8/doctreat from your LiveSmart folders. You can see changed files in changes.txt
+
+- Email me at contact@livesmart.video if you find difficulties with the integration and setup process.

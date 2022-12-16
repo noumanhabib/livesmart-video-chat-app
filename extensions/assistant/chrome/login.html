@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <title>LiveSmart Video Chat Login</title>
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/login.js"></script>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+
+        <div id="form_reg">
+            <h1>Sign In</h1>
+            <div class="form_cont" id="form_cont" style="padding-top: 10px">
+                <div id="error"></div>
+                <div>
+                    <input type="text" name="username" id="username" placeholder="Username"/>
+                </div>
+
+                <div>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+                
+                <div style="padding-top: 10px">
+                    <button id="loginButton">Sign In</button>
+                </div>
+                
+                Do not have an account? <a href="#" id="register">Register for Free</a>
+
+            </div>
+            <div id="loading" style="display: none;">
+                Loading...
+            </div>
+        </div>
+
+    </body>  
+</html>

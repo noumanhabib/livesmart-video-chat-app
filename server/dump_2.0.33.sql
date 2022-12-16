@@ -1,0 +1,1 @@
+ALTER TABLE `lsv_agents` ADD `recovery_token` VARCHAR(255) NULL AFTER `token`, ADD `date_expired` DATETIME NULL AFTER `recovery_token`;

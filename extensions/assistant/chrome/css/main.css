@@ -1,0 +1,109 @@
+#form_reg {
+    background: #f2f2f4 none repeat scroll 0 0;
+    border: 1px solid #484d75;
+    border-radius: 5px;
+    max-width: 500px;
+    max-height: 250px;
+    margin: 0 auto;
+}
+#form_reg h1 {
+    background: #484d75 none repeat scroll 0 0;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+    font-size: 15px;
+    line-height: 30px;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+.form_cont {
+    margin: 0 auto;
+    padding: 5px 0;
+    width: 400px;
+}
+.form_cont  input[type="text"], input[type="password"] {
+    background: #fff none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 5px;
+    color: #1f4558;
+    display: block;
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 10px;
+    padding: 0 2%;
+    width: 100%;
+}
+
+.form_cont button {
+    background: #484d75 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.callerAvatar {
+    float: left;
+    display: inline-block;
+    margin: 6px 10px 0 0;
+    width: 55px;
+    height: 55px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -khtml-border-radius: 50px;
+    border-radius: 50px;
+    border: 2px solid #fff;
+}
+
+.intgr-p {
+    padding: 5px;
+    width: 400px;
+}
+
+.intgr-p p {
+    padding-left: 80px;
+    font-size: 12px;
+}
+
+
+.intgr-p .left-options {
+    float: left;
+    font-size: 15px;
+}
+
+.intgr-p .left-text {
+    width: 150px;
+    float: left;
+    font-size: 15px;
+}
+
+.intgr-p .left  p {
+    color: #000;
+}
+
+.intgr-p .right-options {
+    float: right;
+    font-size: 15px;
+}
+
+.intgr-p .right-text {
+    width: 250px;
+    float: left;
+    font-size: 15px;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}

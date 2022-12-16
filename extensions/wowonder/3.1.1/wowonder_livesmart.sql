@@ -1,0 +1,4 @@
+INSERT INTO `Wo_Config` (`name`, `value`) VALUES
+('livesmart_url', '');
+
+INSERT INTO `Wo_Langs` (`id`, `lang_key`, `type`, `english`, `arabic`, `dutch`, `french`, `german`, `italian`, `portuguese`, `russian`, `spanish`, `turkish`) VALUES (NULL, 'livesmart', 'livesmart', 'LiveSmart Video Chat', 'LiveSmart Video Chat', 'LiveSmart Video Chat', 'LiveSmart Video Chat', 'LiveSmart Video Chat', 'LiveSmart Video Chat', 'LiveSmart Video Chat', 'LiveSmart Video Chat', 'LiveSmart Video Chat', 'LiveSmart Video Chat'), (NULL, 'livesmart_dashboard', 'livesmart_dashboard', 'LiveSmart Dashboard', 'LiveSmart Dashboard', 'LiveSmart Dashboard', 'LiveSmart Dashboard', 'LiveSmart Dashboard', 'LiveSmart Dashboard', 'LiveSmart Dashboard', 'LiveSmart Dashboard', 'LiveSmart Dashboard', 'LiveSmart Dashboard') 

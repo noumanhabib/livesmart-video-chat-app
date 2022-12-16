@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>LiveSmart Assistant Settings</title>
+        
+        <script src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/options.js"></script>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+
+    <body>
+
+        <div id="form_reg">
+            <h1>Settings</h1>
+            <div class="form_cont" id="form_cont">
+                <div id="error"></div>
+                <div class="row clearfix" >
+                    <div class="intgr-p">
+                        <div class="left-options">
+                            Notification on page visits
+                        </div>
+                        <div class="right-options">
+                            <input type="checkbox" value="1" name="notify_presence" id="notify_presence" />
+                        </div>
+                    </div>
+                    <div class="intgr-p">
+                        <div class="left-options">
+                            Notification on incoming video requests
+                        </div>
+                        <div class="right-options">
+                            <input type="checkbox" value="1" name="notify_calls" id="notify_calls" />
+                        </div>
+                    </div>
+                    <div class="intgr-p">
+                        <div class="left-text">
+                            LiveSmart URL
+                        </div>
+                        <div class="right-text">
+                            <input type="text" name="ls_rep_url" id="ls_rep_url" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix" >
+                    <button id="save_button">Save</button>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </body> 
+
+</html>

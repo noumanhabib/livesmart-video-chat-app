@@ -1,0 +1,10 @@
+wp-content/plugins/doctreat_core/init.php
+wp-content/plugins/doctreat_core/helpers/templates/booking-request.php
+wp-content/plugins/doctreat_core/helpers/LiveSmartHelper.php
+wp-content/plugins/doctreat_core/hooks/hooks.php
+wp-content/themes/doctreat/directory/dashboard.php
+wp-content/themes/doctreat/directory/front-end/ajax-hooks.php
+wp-content/themes/doctreat/directory/front-end/functions.php
+wp-content/themes/doctreat/directory/front-end/woo-hooks.php
+wp-content/themes/doctreat/directory/front-end/dashboard-menu-templates/doctors/profile-menu-livesmart-video.php
+wp-content/themes/doctreat/directory/front-end/templates/dashboard-livesmart-video.php

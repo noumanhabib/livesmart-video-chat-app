@@ -1,0 +1,19 @@
+﻿Overview
+LiveSmart Google Chrome Assistant is a Chrome extension that is helping your agents to contact their visitors and is removing the necessity of being logged in the Dashboard panel.
+
+Installation
+There are two ways of installing the Assistant for your agents. Before going to any of the installation procedures, open the manifest file extensions/assistant/chrome/manifest.json and change https://YOUR_DOMAIN https://YOUR_DOMAIN:9001/ with your LiveSmart site location and LiveSmart server endpoint. The endpoint can be seen in config/config.json file in your main folder. For example if your LiveSmart is located here https://mydomain.com/video and your endpoint is https://mydomain.com:9001, your need to change the manifest like this
+"content_security_policy": "script-src 'self' 'unsafe-eval' https://mydomain.com https://mydomain.com:9001/; object-src 'self'",
+Then you can do the installation in any of these:
+
+1. Add extension directly
+1.1. Open Chrome and type chrome://extensions/ in the address bar.
+1.2. Click on Load unpacked button and choose the folder, where your extension is, for example in extensions/assistant/chrome
+
+2. Add the extension in Google store
+2.1. Follow this tutorial - https://developer.chrome.com/docs/webstore/publish/
+2.2. You can check how the assistant is published for the demo site https://chrome.google.com/webstore/detail/livesmart-chrome-assistan/ffegejnahdhoknofjegppblacllljpcm/
+2.3. After some time the Google team will approve the extension and it will appear in the store, so agents can download and install it.
+
+For usage, please open this article
+https://livesmart.video/assistant/
