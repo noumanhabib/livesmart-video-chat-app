@@ -63,11 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (count($errors) > 0) {
+        echo "Errors greater then zero <br />";
         foreach ($errors as $error) {
             $divErrors .= $error;
         }
     } else {
-
+        echo "Executing sqls <br />";
         $liveSmartURL = str_replace('www.', '', $liveSmartURL);
         $stripUrlArr = explode('/', str_replace('https://', '', $liveSmartURL));
         $stripUrl = $stripUrlArr[0];
@@ -89,6 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         //ws/server/config.json file
+        echo "//ws/server/config.json file <br />";
+
         $phpContent = file_get_contents($liveSmartFolder . '/ws/server/config.json');
         if (count($errors) == 0) {
             $success .= 'Database setup successfully finished!<br/>';
