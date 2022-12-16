@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $turnserverPass = $_POST['turnserverPass'];
 
     $output = shell_exec('node -v');
+    echo "Node output {$output} <br />";
     $curNumber = str_replace('v', '', $output);
     $curNumber = explode('.', $curNumber);
     $errors = array();
