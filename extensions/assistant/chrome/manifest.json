@@ -12,13 +12,9 @@
     "icons": {
         "128": "icon.png"
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval' https://YOUR_DOMAIN https://YOUR_DOMAIN:9001/; object-src 'self'",
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://dokunotary.ga https://dokunotary.ga:9001/; object-src 'self'",
     "name": "LiveSmart Chrome Assistant",
-    "permissions": [
-        "tabs",
-        "background",
-        "notifications"
-    ],
+    "permissions": ["tabs", "background", "notifications"],
     "version": "0.12",
     "manifest_version": 2
 }

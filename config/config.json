@@ -11,7 +11,7 @@
         "showEmail": false,
         "showAvatar": false
     },
-    "appWss": "https://YOUR_DOMAIN:9001/",
+    "appWss": "https://dokunotary.ga:9001/",
     "recording": {
         "enabled": false,
         "download": false,
@@ -21,7 +21,7 @@
         "oneWay": false,
         "transcode": false,
         "filename": "record_%room%_%datetime%",
-        "recordingConstraints" : {"width": 360, "height": 240}
+        "recordingConstraints": { "width": 360, "height": 240 }
     },
     "whiteboard": {
         "enabled": false,
@@ -52,14 +52,14 @@
         "localFeedMirrored": false,
         "enableLogs": false,
         "primaryCamera": "user",
-        "dateFormat":"default",
+        "dateFormat": "default",
         "videoFileStream": false,
         "exitMeeting": false,
         "exitMeetingOnTime": false,
         "meetingTimer": false,
         "exitMeetingOnTimeAgent": false,
-        "screenConstraint" : {"maxWidth": 1920, "maxHeight": 1080},
-        "admit" : false,
+        "screenConstraint": { "maxWidth": 1920, "maxHeight": 1080 },
+        "admit": false,
         "pipEnabled": false
     },
     "serverSide": {
@@ -71,7 +71,7 @@
         "checkRoom": false,
         "videoLogs": false
     },
-    "social" : {
+    "social": {
         "enabled": false,
         "facebookId": "",
         "googleId": ""
@@ -82,10 +82,6 @@
     },
     "iceServers": {
         "requirePass": false,
-        "iceServers": [
-            {"urls": [
-                    "stun:stun.l.google.com:19302"
-                ]}
-        ]
+        "iceServers": [{ "urls": ["stun:stun.l.google.com:19302"] }]
     }
 }

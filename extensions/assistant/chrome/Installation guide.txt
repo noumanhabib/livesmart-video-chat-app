@@ -2,7 +2,7 @@
 LiveSmart Google Chrome Assistant is a Chrome extension that is helping your agents to contact their visitors and is removing the necessity of being logged in the Dashboard panel.
 
 Installation
-There are two ways of installing the Assistant for your agents. Before going to any of the installation procedures, open the manifest file extensions/assistant/chrome/manifest.json and change https://YOUR_DOMAIN https://YOUR_DOMAIN:9001/ with your LiveSmart site location and LiveSmart server endpoint. The endpoint can be seen in config/config.json file in your main folder. For example if your LiveSmart is located here https://mydomain.com/video and your endpoint is https://mydomain.com:9001, your need to change the manifest like this
+There are two ways of installing the Assistant for your agents. Before going to any of the installation procedures, open the manifest file extensions/assistant/chrome/manifest.json and change https://dokunotary.ga https://dokunotary.ga:9001/ with your LiveSmart site location and LiveSmart server endpoint. The endpoint can be seen in config/config.json file in your main folder. For example if your LiveSmart is located here https://mydomain.com/video and your endpoint is https://mydomain.com:9001, your need to change the manifest like this
 "content_security_policy": "script-src 'self' 'unsafe-eval' https://mydomain.com https://mydomain.com:9001/; object-src 'self'",
 Then you can do the installation in any of these:
 
