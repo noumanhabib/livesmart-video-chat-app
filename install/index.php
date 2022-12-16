@@ -22,9 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($curNumber[0])) {
         array_push($errors, 'Node version not suitable or Node is missing. You need to install it.<br/>');
     }
-    if ($curNumber[0] < 12) {
-        array_push($errors, 'Node version is less then 12. Current is: ' . $curNumber[0] . ' <br/>');
-    }
 
     if (!is_dir($liveSmartFolder) && !is_dir($liveSmartFolder . '/config')) {
         array_push($errors, 'LiveSmart folder is not correct. Make sure the folder exists and your LiveSmart files are there.<br/>');
