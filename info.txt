@@ -1,0 +1,39 @@
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1#Owais#1';
+
+CREATE USER 'site'@'localhost' IDENTIFIED WITH authentication_plugin BY '1#Owais#1';
+
+location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+    }
+
+location ~ /\.ht {
+    deny all;
+}
+
+sudo apt install certbot python3-certbot-nginx
+
+sudo certbot --nginx -d dokunotary.ga -d www.dokunotary.ga
+
+
+GRANT ALL PRIVILEGES ON livesmart.* TO 'site'@'localhost' WITH GRANT OPTION;
+
+server-name=dokunotary.ga
+cert=/etc/letsencrypt/live/dokunotary.ga/cert.pem
+pkey=/etc/letsencrypt/live/dokunotary.ga/privkey.pem
+realm=coturn.meetrix.io
+fingerprint
+listening-ip=0.0.0.0
+external-ip=45.82.72.250
+listening-port=3478
+min-port=10000
+max-port=20000
+log-file=/var/log/turnserver.log
+verbose
+
+user=livesmart:owais
+lt-cred-mech
+
+
+Turn Testing
+turn:45.82.72.250:3478

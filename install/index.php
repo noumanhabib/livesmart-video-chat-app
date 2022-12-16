@@ -19,8 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $curNumber = str_replace('v', '', $output);
     $curNumber = explode('.', $curNumber);
     $errors = array();
-    if (!isset($curNumber[0]) || $curNumber[0] < 12) {
+    if (!isset($curNumber[0])) {
         array_push($errors, 'Node version not suitable or Node is missing. You need to install it.<br/>');
+    }
+    if ($curNumber[0] < 12) {
+        array_push($errors, 'Node version is less then 12.<br/>');
     }
 
     if (!is_dir($liveSmartFolder) && !is_dir($liveSmartFolder . '/config')) {
@@ -29,17 +32,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $compare = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     $explodeUrl = explode('/install', $compare);
-    
-    $liveSmartURL = $explodeUrl[0];
-    
 
-//    if (!file_exists($filenameCert)) {
-//        array_push($errors, 'Certificate file you provided is missing. Please make sure file location is properly provided.<br/>');
-//    }
-//
-//    if (!file_exists($filenameKey)) {
-//        array_push($errors, 'Key file you provided is missing. Please make sure file location is properly provided.<br/>');
-//    }
+    $liveSmartURL = $explodeUrl[0];
+
+
+    //    if (!file_exists($filenameCert)) {
+    //        array_push($errors, 'Certificate file you provided is missing. Please make sure file location is properly provided.<br/>');
+    //    }
+    //
+    //    if (!file_exists($filenameKey)) {
+    //        array_push($errors, 'Key file you provided is missing. Please make sure file location is properly provided.<br/>');
+    //    }
 
     $dsn = "mysql:host=$servername;dbname=$database;charset=$charset";
     $options = [
@@ -176,109 +179,127 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>LiveSmart installation wizard</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            .bs-example{
-                padding-top: 5px;
-                margin: auto;
-                width: 900px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="bs-example">
-            <p>
-                Welcome to LiveSmart installation wizard! This script applies for Ubuntu/Debian and CentOS operating systems. In order to fully install LiveSmart and <a href="https://www.new-dev.com/page/ident/live_smart_video_chat_installation#stunturn" target="_blank">turnserver</a> on your server, you need:<br/>
-                - some basic knowledge of Linux administration;<br/>
-                - root access;<br/>
-                - SSL certificate and key;<br/>
-                - MySQL database;<br/>
-                When you click on Setup button, the config files will be generated and you will get instructions on how to finalize your installation. Check this <a href="https://www.youtube.com/watch?v=Sjk0nsiRu3E" target="_blank">video tutorial</a> for step by step instructions.
-            </p>
-            <hr>
-            <?php if ($success) { ?>
-                <div id="success" class="alert alert-success col-sm-10">
-                    <?php echo $success; ?>
-                </div>
-            <?php } ?>
-            <?php if ($divErrors) { ?>
-                <div id="errors" class="alert alert-danger col-sm-10">
-                    <?php echo $divErrors; ?>
-                </div>
-            <?php } ?>
-            <form method="post">
-                <div class="form-group row">
-                    <label for="filenameCert" class="col-sm-3 col-form-label">Certificate path</label>
 
-                    <div class="col-sm-8">
-                        <input type="input" class="form-control" name="filenameCert" id="filenameCert" value="<?php echo @$_POST['filenameCert'] ?>" placeholder="Certificate absolute path" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="filenameKey" class="col-sm-3 col-form-label">Key path</label>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>LiveSmart installation wizard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    .bs-example {
+        padding-top: 5px;
+        margin: auto;
+        width: 900px;
+    }
+    </style>
+</head>
 
-                    <div class="col-sm-8">
-                        <input type="input" class="form-control" name="filenameKey" id="filenameKey" value="<?php echo @$_POST['filenameKey'] ?>" placeholder="Key absolute path" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <small>Absolute paths where your certificate and key are. 
-                        <br/>CPanel/WHM users for CentOS can check this <a href="https://www.new-dev.com/page/ident/live_smart_video_chat_cpanel" target="_blank">tutorial</a>.
-                        <br/>Letsencrypt certificates are located in
-                        cert: /etc/letsencrypt/live/YOURDOMAIN/fullchain.pem and key: /etc/letsencrypt/live/YOURDOMAIN/privkey.pem
-                        <br/>
-                        Other location, where you can check are /etc/ssl/private/ and /etc/ssl/certs
-                    </small>
-                </div>
-                <div class="form-group row">
-                    <label for="database" class="col-sm-3 col-form-label">Database</label>
-                    <div class="col-sm-8">
-                        <input type="input" class="form-control" name="database" id="database" placeholder="Database name" value="<?php echo @$_POST['database'] ?>" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="username" class="col-sm-3 col-form-label">Database Username</label>
-                    <div class="col-sm-8">
-                        <input type="input" class="form-control" name="username" id="username" placeholder="Database username" value="<?php echo @$_POST['username'] ?>" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="password" class="col-sm-3 col-form-label">Database Password</label>
-                    <div class="col-sm-8">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Database password" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <small>You need to provide here your database information, where you need LiveSmart to be installed.
-                    </small>
-                </div>
-                <div class="form-group row">
-                    <label for="turnserverUser" class="col-sm-3 col-form-label">Turnserver Username</label>
-                    <div class="col-sm-8">
-                        <input type="input" class="form-control" name="turnserverUser" id="turnserverUser" placeholder="Turnserver username" value="<?php echo @$_POST['turnserverUser'] ?>" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="turnserverPass" class="col-sm-3 col-form-label">Turnserver Password</label>
-                    <div class="col-sm-8">
-                        <input type="password" class="form-control" name="turnserverPass" id="turnserverPass" placeholder="Turnserver password" value="<?php echo @$_POST['turnerverPass'] ?>" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <small>Username and password of your choice for the installation of your turnserver.
-                    </small>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-10 offset-sm-2">
-                        <button type="submit" class="btn btn-primary">Setup</button>
-                    </div>
-                </div>
-            </form>
+<body>
+    <div class="bs-example">
+        <p>
+            Welcome to LiveSmart installation wizard! This script applies for Ubuntu/Debian and CentOS operating
+            systems. In order to fully install LiveSmart and <a
+                href="https://www.new-dev.com/page/ident/live_smart_video_chat_installation#stunturn"
+                target="_blank">turnserver</a> on your server, you need:<br />
+            - some basic knowledge of Linux administration;<br />
+            - root access;<br />
+            - SSL certificate and key;<br />
+            - MySQL database;<br />
+            When you click on Setup button, the config files will be generated and you will get instructions on how to
+            finalize your installation. Check this <a href="https://www.youtube.com/watch?v=Sjk0nsiRu3E"
+                target="_blank">video tutorial</a> for step by step instructions.
+        </p>
+        <hr>
+        <?php if ($success) { ?>
+        <div id="success" class="alert alert-success col-sm-10">
+            <?php echo $success; ?>
         </div>
-    </body>
+        <?php } ?>
+        <?php if ($divErrors) { ?>
+        <div id="errors" class="alert alert-danger col-sm-10">
+            <?php echo $divErrors; ?>
+        </div>
+        <?php } ?>
+        <form method="post">
+            <div class="form-group row">
+                <label for="filenameCert" class="col-sm-3 col-form-label">Certificate path</label>
+
+                <div class="col-sm-8">
+                    <input type="input" class="form-control" name="filenameCert" id="filenameCert"
+                        value="<?php echo @$_POST['filenameCert'] ?>" placeholder="Certificate absolute path" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="filenameKey" class="col-sm-3 col-form-label">Key path</label>
+
+                <div class="col-sm-8">
+                    <input type="input" class="form-control" name="filenameKey" id="filenameKey"
+                        value="<?php echo @$_POST['filenameKey'] ?>" placeholder="Key absolute path" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <small>Absolute paths where your certificate and key are.
+                    <br />CPanel/WHM users for CentOS can check this <a
+                        href="https://www.new-dev.com/page/ident/live_smart_video_chat_cpanel"
+                        target="_blank">tutorial</a>.
+                    <br />Letsencrypt certificates are located in
+                    cert: /etc/letsencrypt/live/YOURDOMAIN/fullchain.pem and key:
+                    /etc/letsencrypt/live/YOURDOMAIN/privkey.pem
+                    <br />
+                    Other location, where you can check are /etc/ssl/private/ and /etc/ssl/certs
+                </small>
+            </div>
+            <div class="form-group row">
+                <label for="database" class="col-sm-3 col-form-label">Database</label>
+                <div class="col-sm-8">
+                    <input type="input" class="form-control" name="database" id="database" placeholder="Database name"
+                        value="<?php echo @$_POST['database'] ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="username" class="col-sm-3 col-form-label">Database Username</label>
+                <div class="col-sm-8">
+                    <input type="input" class="form-control" name="username" id="username"
+                        placeholder="Database username" value="<?php echo @$_POST['username'] ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-sm-3 col-form-label">Database Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" name="password" id="password"
+                        placeholder="Database password" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <small>You need to provide here your database information, where you need LiveSmart to be installed.
+                </small>
+            </div>
+            <div class="form-group row">
+                <label for="turnserverUser" class="col-sm-3 col-form-label">Turnserver Username</label>
+                <div class="col-sm-8">
+                    <input type="input" class="form-control" name="turnserverUser" id="turnserverUser"
+                        placeholder="Turnserver username" value="<?php echo @$_POST['turnserverUser'] ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="turnserverPass" class="col-sm-3 col-form-label">Turnserver Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" name="turnserverPass" id="turnserverPass"
+                        placeholder="Turnserver password" value="<?php echo @$_POST['turnerverPass'] ?>" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <small>Username and password of your choice for the installation of your turnserver.
+                </small>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Setup</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
 </html>
