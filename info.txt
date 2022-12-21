@@ -9,7 +9,7 @@ location ~ \.php$ {
 
 location ~ /\.ht {
     deny all;
-}
+} 
 
 sudo apt install certbot python3-certbot-nginx
 
